@@ -19,6 +19,11 @@ HomeOffice::HomeOffice(int size)
     top = EMPTY;
 }
 
+HomeOffice::~HomeOffice()
+{
+    //TODO
+}
+
 bool HomeOffice::full() {return top == size - 1;}
 bool HomeOffice::empty() {return top == EMPTY;}
 void HomeOffice::resize()

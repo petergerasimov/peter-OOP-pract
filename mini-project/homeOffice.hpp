@@ -16,6 +16,7 @@ class HomeOffice
     public:
         HomeOffice();
         HomeOffice(int size);
+        ~HomeOffice();
         void add(const Employee &employee);
         void remove(const char* name);
         void list();
