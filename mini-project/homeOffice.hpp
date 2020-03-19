@@ -3,7 +3,7 @@
 
 #include "employee.hpp"
 
-class homeOffice
+class HomeOffice
 {
     private:
         Employee* employees;
@@ -14,8 +14,8 @@ class homeOffice
         void resize();
 
     public:
-        homeOffice();
-        homeOffice(int size);
+        HomeOffice();
+        HomeOffice(int size);
         void add(const Employee &employee);
         void remove(const char* name);
         void list();

@@ -5,23 +5,23 @@
 const int INIT_SIZE = 16;
 const int EMPTY = -1;
 
-homeOffice::homeOffice()
+HomeOffice::HomeOffice()
 {
     employees = new Employee[INIT_SIZE];
     this->size = size;
     top = EMPTY;
 }
 
-homeOffice::homeOffice(int size)
+HomeOffice::HomeOffice(int size)
 {
     employees = new Employee[size];
     this->size = size;
     top = EMPTY;
 }
 
-bool homeOffice::full() {return top == size - 1;}
-bool homeOffice::empty() {return top == EMPTY;}
-void homeOffice::resize()
+bool HomeOffice::full() {return top == size - 1;}
+bool HomeOffice::empty() {return top == EMPTY;}
+void HomeOffice::resize()
 {
     int newSize = size * 2;
     Employee* newEmployees = new Employee[newSize];
@@ -34,7 +34,7 @@ void homeOffice::resize()
     employees = newEmployees;
 }
 
-void homeOffice::add(const Employee &employee)
+void HomeOffice::add(const Employee &employee)
 {
     if(full())
         resize();
@@ -43,7 +43,7 @@ void homeOffice::add(const Employee &employee)
 }
 
 //Remove by fist name (TODO remove by id)
-void homeOffice::remove(const char* name)
+void HomeOffice::remove(const char* name)
 {
     if(empty())
         return;
@@ -58,7 +58,7 @@ void homeOffice::remove(const char* name)
     } 
 }
 
-void homeOffice::list()
+void HomeOffice::list()
 {
     for(int i = 0; i <= top; i++)
     {

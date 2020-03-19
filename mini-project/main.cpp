@@ -4,7 +4,7 @@
 
 int main()
 {
-    homeOffice office;
+    HomeOffice office;
     Employee gosho("Gosho","Petrov","CEO");
     Employee pesho("Pesho","Petrov","CEO");
     Employee tisho("Tisho","Petrov","CEO");
