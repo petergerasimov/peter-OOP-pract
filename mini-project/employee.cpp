@@ -14,6 +14,7 @@ Employee::Employee(const char* firstName,
                    const char* position
                   )                         
 {
+    //maybe make a function for this so it doesn't repeat 1000 times
     this->firstName = new char[strlen(firstName) + 1];
     strcpy(this->firstName, firstName);
 

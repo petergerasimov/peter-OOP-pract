@@ -12,6 +12,8 @@ class Date
         Date(unsigned day, unsigned month, int year);
         void set(unsigned day, unsigned month, int year);
         void print();
+        // Date& operator=(Date& a);
+        Date& operator+(Date& a);
 };
 
 #endif
