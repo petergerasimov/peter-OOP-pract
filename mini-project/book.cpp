@@ -14,7 +14,7 @@ Book::Book(
              const int& isbn,
              const int& pages,
              const Date& issueDate,
-             const Employee& getAddedBy
+             const Employee& addedBy
             )
 {
     this->name = new char[strlen(name) + 1];
@@ -27,11 +27,12 @@ Book::Book(
     this->pages = pages;
     this->issueDate = issueDate;
     //May cause issues
-    this->getAddedBy = getAddedBy;
+    this->addedBy = addedBy;
 }
 Book::~Book()
 {
-
+    delete[] name;
+    delete[] author;
 }
 //Setters
 void Book::setName(const char* name)

@@ -1,22 +1,14 @@
 #include <iostream>
 #include "employee.hpp"
 #include "homeOffice.hpp"
+#include "date.hpp"
 
 int main()
 {
-    HomeOffice office;
-    Employee gosho("Gosho","Petrov","CEO");
-    Employee pesho("Pesho","Petrov","CEO");
-    Employee tisho("Tisho","Petrov","CEO");
-    office.add(gosho);
-    office.list();
-    std::cout << "--------------\n";
-    office.add(pesho);
-    office.add(tisho);
-    office.list();
-    std::cout << "--------------\n";
-    office.remove("Gosho");
-    office.list();
-    std::cout << "--------------\n";
+    Date test(5,16,2002);
+    //Date test1(1,2,9);
+    //Date test2 = test + test1;
+    test.print();
+
     return EXIT_SUCCESS;
 }

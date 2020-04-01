@@ -13,6 +13,7 @@ Date::Date(unsigned day, unsigned month, int year)
     this->day = day;
     this->month = month;
     this->year = year;
+    convertToValid(*this);
 }
 
 void Date::set(unsigned day, unsigned month, int year)
@@ -20,6 +21,7 @@ void Date::set(unsigned day, unsigned month, int year)
     this->day = day;
     this->month = month;
     this->year = year;
+    convertToValid(*this);
 }
 
 void Date::print()
@@ -32,23 +34,28 @@ void Date::print()
 //     return *this;
 // }
 
-Date& Date::operator+(Date& a)
+void Date::convertToValid(Date& a)
+{
+    //All months are 30 days long for now
+    while(a.day > 30)
+    {
+        a.day-=30;
+        a.month++;
+    }
+    while(a.month > 12)
+    {
+        a.month-=12;
+        a.year++;
+    }
+}
+
+Date Date::operator+(const Date& a)
 {
     Date temp = *this;
     temp.day += a.day;
     temp.month += a.month;
-
-    //I feel lazy -> every month has 30 days for now
-    while(day > 30)
-    {
-        temp.day-=30;
-        temp.month++;
-    }
-    while(month > 12)
-    {
-        temp.month-=12;
-        temp.year++;
-    }
+    temp.year += a.year;
+    convertToValid(temp);
     return temp;
     
 }
