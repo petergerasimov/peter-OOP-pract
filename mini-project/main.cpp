@@ -5,10 +5,25 @@
 
 int main()
 {
-    Date test(5,16,2002);
-    //Date test1(1,2,9);
-    //Date test2 = test + test1;
-    test.print();
+    Employee gosho("Gosho", "Goshev", "shef", admin);
+    Employee tosho("Tosho", "Toshev", "ne shef", user);
+    gosho.setPassword("123");
+
+    HomeOffice office;
+    office.add(gosho); //maybe initialize class with a default admin account
+    office.addBy(gosho, tosho, "124");
+    std::cout << "-------------\n";
+    office.list();
+    std::cout << "-------------\n";
+    office.addBy(gosho, tosho, "123");
+    office.list();
+    std::cout << "-------------\n";
+    office.removeBy(tosho, "Gosho");
+    office.list();
+    std::cout << "-------------\n";
+    office.removeBy(gosho, "Tosho", "123");
+    office.list();
+    std::cout << "-------------\n";
 
     return EXIT_SUCCESS;
 }

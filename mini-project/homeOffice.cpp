@@ -47,6 +47,12 @@ void HomeOffice::add(const Employee &employee)
     employees[++top] = employee;
 }
 
+void HomeOffice::addBy(Employee &contributor, const Employee &toBeAdded, const char* password)
+{
+    if(contributor.getStatus() == admin && contributor.authenticate(password))
+        add(toBeAdded);
+}
+
 //Remove by fist name (TODO remove by id)
 void HomeOffice::remove(const char* name)
 {
@@ -61,6 +67,12 @@ void HomeOffice::remove(const char* name)
             return;
         }
     } 
+}
+
+void HomeOffice::removeBy(Employee &contributor, const char* toBeRemoved, const char* password)
+{
+    if(contributor.getStatus() == admin && contributor.authenticate(password))
+        remove(toBeRemoved);
 }
 
 void HomeOffice::list()

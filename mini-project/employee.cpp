@@ -7,11 +7,13 @@ Employee::Employee()
     firstName = nullptr;
     lastName  = nullptr;
     position  = nullptr;
+    status = user;
 }
 
 Employee::Employee(const char* firstName,
                    const char* lastName,
-                   const char* position
+                   const char* position,
+                   EMPLOYEE_STATUS status = user
                   )                         
 {
     //maybe make a function for this so it doesn't repeat 1000 times
@@ -23,6 +25,8 @@ Employee::Employee(const char* firstName,
 
     this->position = new char[strlen(position) + 1];
     strcpy(this->position, position);
+
+    this->status = status;
 }
 
 Employee::~Employee()
@@ -30,6 +34,8 @@ Employee::~Employee()
     delete[] firstName;
     delete[] lastName;
     delete[] position;
+    if(password) 
+        delete[] password;
 }
 
 void Employee::setFirstName(const char* firstName)
@@ -53,6 +59,19 @@ void Employee::setPosition(const char* position)
     this->position = new char[strlen(position) + 1];
     strcpy(this->position, position);
 }
+void Employee::setStatus(EMPLOYEE_STATUS status)
+{
+    this->status = status;
+}
+
+void Employee::setPassword(const char* password)
+{
+    if(this->password)
+        delete[] this->password;
+    this->password = new char[strlen(password) + 1];
+    strcpy(this->password, password);
+}
+
 const char* Employee::getFirstName()
 {
     return firstName;
@@ -64,4 +83,14 @@ const char* Employee::getLastName()
 const char* Employee::getPosition()
 {
     return position;
+}
+EMPLOYEE_STATUS Employee::getStatus()
+{
+    return status;
+}
+
+bool Employee::authenticate(const char* password)
+{
+    if(!this->password) return true;
+    return strcmp(this->password, password) == 0;
 }
