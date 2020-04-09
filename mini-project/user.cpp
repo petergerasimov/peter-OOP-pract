@@ -38,7 +38,6 @@ User::~User()
         delete[] password;
 }
 
-//This causes a segmentation fault :( 
 User& User::operator=(const User& a) {
     if(a.firstName)
         setFirstName(a.firstName);
