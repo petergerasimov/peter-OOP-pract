@@ -2,7 +2,7 @@
 #define _BOOK_HPP
 
 #include "date.hpp"
-#include "employee.hpp"
+#include "user.hpp"
 
 //This class hasn't been tested
 
@@ -14,7 +14,7 @@ class Book
         int isbn;
         int pages;
         Date issueDate;
-        Employee addedBy;
+        User addedBy;
     public:
         Book();
         Book(
@@ -23,7 +23,7 @@ class Book
              const int& isbn,
              const int& pages,
              const Date& issueDate,
-             const Employee& getAddedBy
+             const User& getAddedBy
             );
         ~Book();
         //Setters
@@ -32,14 +32,14 @@ class Book
         void setISBN(const int& isbn);
         void setPages(const int& pages);
         void setIssueDate(const Date& issueDate);
-        void setAddedBy(const Employee& addedBy);
+        void setAddedBy(const User& addedBy);
         //Getters
         const char* getName();
         const char* getAuthor();
         int getISBN();
         int getPages();
         Date getIssueDate();
-        Employee getAddedBy();
+        User getAddedBy();
         
 };
 

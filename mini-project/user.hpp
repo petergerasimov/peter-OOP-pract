@@ -1,39 +1,42 @@
-#ifndef _EMPLOYEE_HPP
-#define _EMPLOYEE_HPP
+#ifndef _User_HPP
+#define _User_HPP
 
-enum EMPLOYEE_STATUS {admin, user};
+enum USER_STATUS {admin, employee, user};
 
-class Employee
+class User
 {
     private:
         char* firstName;
         char* lastName;
         char* position;
         char* password = nullptr;
-        EMPLOYEE_STATUS status;
+        USER_STATUS status;
     public:
-        Employee();
-        Employee(const char* firstName,
+        User();
+        User(const char* firstName,
                  const char* lastName,
                  const char* position,
-                 EMPLOYEE_STATUS status
+                 USER_STATUS status
                 );
-        ~Employee();
+        ~User();
 
+        //Utils
+        User& operator=(const User& a);
 
         //Setters
         void setFirstName(const char* firstName);
         void setLastName(const char* lastName);
         void setPosition(const char* position);
-        void setStatus(EMPLOYEE_STATUS status);
+        void setStatus(USER_STATUS status);
         void setPassword(const char* password);
 
         //Getters
-        const char* getFirstName();
-        const char* getLastName();
-        const char* getPosition();
-        EMPLOYEE_STATUS getStatus();
+        const char* getFirstName() const;
+        const char* getLastName() const;
+        const char* getPosition() const;
+        const USER_STATUS getStatus() const;
         bool authenticate(const char* password);
+
 
 
 

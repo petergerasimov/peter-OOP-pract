@@ -14,7 +14,7 @@ Book::Book(
              const int& isbn,
              const int& pages,
              const Date& issueDate,
-             const Employee& addedBy
+             const User& addedBy
             )
 {
     this->name = new char[strlen(name) + 1];
@@ -62,7 +62,7 @@ void Book::setIssueDate(const Date& issueDate)
 {
     this->issueDate = issueDate;
 }
-void Book::setAddedBy(const Employee& addedBy)
+void Book::setAddedBy(const User& addedBy)
 {
     //May cause issues
     this->addedBy = addedBy;
@@ -88,7 +88,7 @@ Date Book::getIssueDate()
 {
     return issueDate;
 }
-Employee Book::getAddedBy()
+User Book::getAddedBy()
 {
     return addedBy;
 }
