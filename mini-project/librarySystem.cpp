@@ -2,7 +2,7 @@
 
 LibrarySystem::LibrarySystem()
 {
-    //currentUser = *users.getUserById(0);
+    currentUser = *users.getUserById(0);
 }
 
 LibrarySystem::~LibrarySystem()
@@ -58,6 +58,10 @@ void LibrarySystem::command()
     if(isNextWord("list"))
     {
         users.list();
+    }
+    else if(isCurrWord("whoami"))
+    {
+        std::cout << currentUser.getFirstName() << std::endl;
     }
     else if(isCurrWord("add"))
     {
