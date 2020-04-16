@@ -10,6 +10,7 @@ LibrarySystem::~LibrarySystem()
     
 }
 
+//Unused for now
 void LibrarySystem::update()
 {
     command();
@@ -48,7 +49,7 @@ bool LibrarySystem::isCurrWord(const char *word)
     return strcmp(cmd, word) == 0;
 }
 
-void LibrarySystem::command()
+int LibrarySystem::command()
 {
     std::cout << "Enter command: ";
 
@@ -57,11 +58,29 @@ void LibrarySystem::command()
 
     if(isNextWord("list"))
     {
-        users.list();
+        if(isNextWord("all"))
+        {
+            if(isNextWord("users"))
+            {
+                users.printList();
+                return 0;
+            }
+        }
+        else if(isCurrWord("books"))
+        {
+            books.printList();
+            return 0;
+        }
+        else if(isCurrWord("magazines"))
+        {
+            magazines.printList();
+            return 0;
+        }
     }
     else if(isCurrWord("whoami"))
     {
         std::cout << currentUser.getFirstName() << std::endl;
+        return 0;
     }
     else if(isCurrWord("add"))
     {
@@ -84,20 +103,54 @@ void LibrarySystem::command()
             temp.setStatus(user);
             //extractString(cmd); //no password for now
             users.addBy(currentUser, temp);
+            return 0;
         }
-        else if(isCurrWord("book"))
+        else if(isCurrWord("book")) // add book Name Author ISBN Pages TODO: ISSUE DATE
         {
+            Book temp;
+            extractString(cmd);
+            temp.setName(cmd);
 
+            extractString(cmd);
+            temp.setAuthor(cmd);
+
+            extractString(cmd);
+            temp.setISBN(atoi(cmd));
+
+            extractString(cmd);
+            temp.setPages(atoi(cmd));
+
+            temp.setIssueDate({1,1,2000});
+            temp.setAddedBy(currentUser);
+
+            books.add(temp);
+            return 0;
+        }
+        else if(isCurrWord("magazine")) // add book Name Author ISBN TODO: ISSUE DATE
+        {
+            Magazine temp;
+            extractString(cmd);
+            temp.setName(cmd);
+
+            extractString(cmd);
+            temp.setAuthor(cmd);
+
+            extractString(cmd);
+            temp.setISBN(atoi(cmd));
+
+            temp.setIssueDate({1,1,2000});
+            temp.setAddedBy(currentUser);
+
+            magazines.add(temp);
+            return 0;
         }
     }
     else if(isCurrWord("exit"))
     {
         std::cout << "exiting...\n";
-        //to do
+        return 1;
     }
-    else
-    {
-        std::cout << "Unknown command\n";
-    }
-    
+
+    std::cout << "Unknown command\n";
+    return 0;
 }

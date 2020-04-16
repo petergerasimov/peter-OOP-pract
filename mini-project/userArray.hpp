@@ -23,8 +23,9 @@ class UserArray
         ~UserArray();
         
         void addBy(User &contributor, const User &toBeAdded, const char* password = " ");
+        //This is not very good
         void removeBy(User &contributor, int toBeRemovedID, const char* password = " ");
-        void list();
+        void printList();
 
         User* getUserById(int id);
 

@@ -1,26 +1,28 @@
 #ifndef __BOOK_ARRAY_HPP
 #define __BOOK_ARRAY_HPP
 
+#include "literature.hpp"
 #include "book.hpp"
+#include "magazine.hpp"
 
 class BookArray
 {
     private:
-        Book* books;
+        Literature* books;
         int size;
         int top;
         bool full();
         bool empty();
         void resize();
-        Book* getBookById(int id);
+        Literature* getBookByISBN(int ISBN);
 
     public:
         BookArray();
         BookArray(int size);
         ~BookArray();
-        void add(const Book &book);
-        void remove(int id);
-        void list();
+        void add(const Literature &book);
+        void remove(int ISBN);
+        void printList();
 
 };
 

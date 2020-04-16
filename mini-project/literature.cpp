@@ -2,40 +2,47 @@
 #include <iostream>
 #include <cstring>
 
-Book::Book()
+
+//Literature 
+Literature::Literature()
 {
     name = nullptr;
     author = nullptr;
 }
 
-Book::Book(
+Literature::Literature(
              const char* name,
              const char* author,
              const int& isbn,
-             const int& pages,
              const Date& issueDate,
              const User& addedBy
             )
 {
-    this->name = new char[strlen(name) + 1];
-    strcpy(this->name, name);
-
-    this->author = new char[strlen(author) + 1];
-    strcpy(this->author, author);
-
-    this->isbn = isbn;
-    this->pages = pages;
+    setName(name);
+    setAuthor(author);
+    setISBN(isbn);
     this->issueDate = issueDate;
     //May cause issues
     this->addedBy = addedBy;
 }
-Book::~Book()
+Literature::~Literature()
 {
     delete[] name;
     delete[] author;
 }
+
+Literature& Literature::operator=(const Literature& a) {
+    if(a.name)
+        setName(a.name);
+    if(a.author)
+        setAuthor(a.author);
+    setISBN(a.isbn);
+    setIssueDate(a.issueDate);
+
+    return *this;
+}
 //Setters
-void Book::setName(const char* name)
+void Literature::setName(const char* name)
 {
     //Make a class for string or smth
     if(this->name)
@@ -43,52 +50,44 @@ void Book::setName(const char* name)
     this->name = new char[strlen(name) + 1];
     strcpy(this->name, name);
 }
-void Book::setAuthor(const char* author)
+void Literature::setAuthor(const char* author)
 {
     if(this->author)
         delete[] this->author;
     this->author = new char[strlen(author) + 1];
     strcpy(this->author, author);
 }
-void Book::setISBN(const int& isbn)
+void Literature::setISBN(const int& isbn)
 {
     this->isbn = isbn;
 }
-void Book::setPages(const int& pages)
-{
-    this->pages = pages;
-}
-void Book::setIssueDate(const Date& issueDate)
+void Literature::setIssueDate(const Date& issueDate)
 {
     this->issueDate = issueDate;
 }
-void Book::setAddedBy(const User& addedBy)
+void Literature::setAddedBy(const User& addedBy)
 {
     //May cause issues
     this->addedBy = addedBy;
 }
 //Getters
-const char* Book::getName()
+const char* Literature::getName()
 {
     return name;
 }
-const char* Book::getAuthor()
+const char* Literature::getAuthor()
 {
     return author;
 }
-int Book::getISBN()
+int Literature::getISBN()
 {
     return isbn;
 }
-int Book::getPages()
-{
-    return pages;
-}
-Date Book::getIssueDate()
+Date Literature::getIssueDate()
 {
     return issueDate;
 }
-User Book::getAddedBy()
+User Literature::getAddedBy()
 {
     return addedBy;
 }

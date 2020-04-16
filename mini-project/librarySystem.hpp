@@ -15,6 +15,7 @@ class LibrarySystem
         char cmd[MAX_COMMAND_SIZE];
         int cursor = 0;
         BookArray books;
+        BookArray magazines;
         UserArray users;
         User currentUser;
 
@@ -26,7 +27,7 @@ class LibrarySystem
         LibrarySystem();
         ~LibrarySystem();
         void update();
-        void command();
+        int command();
 };
 
 #endif //__LIBRARY_SYSTEM_HPP

@@ -8,8 +8,7 @@ int main()
 {
     LibrarySystem lib;
     
-    for(;;)lib.update();
-
+    while(lib.command() == 0);
 
     return EXIT_SUCCESS;
 }

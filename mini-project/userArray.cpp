@@ -88,14 +88,12 @@ void UserArray::removeBy(User &contributor, int toBeRemovedID, const char* passw
         remove(toBeRemovedID);
 }
 
-void UserArray::list()
+void UserArray::printList()
 {
     for(int i = 0; i <= top; i++)
     {
-        std::cout << i << ": " 
-                  << users[i].getFirstName() << " " 
-                  << users[i].getLastName()  << " " 
-                  << users[i].getPosition()  << std::endl;
+        users[i].printInfo();
+        std::cout << std::endl;
     }
 }
 

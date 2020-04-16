@@ -35,6 +35,8 @@ class User
         const char* getLastName() const;
         const char* getPosition() const;
         const USER_STATUS getStatus() const;
+
+        void printInfo() const;        
         bool authenticate(const char* password);
 
 

@@ -16,17 +16,10 @@ User::User(const char* firstName,
                    USER_STATUS status = user
                   )                         
 {
-    //maybe make a function for this so it doesn't repeat 1000 times
-    this->firstName = new char[strlen(firstName) + 1];
-    strcpy(this->firstName, firstName);
-
-    this->lastName = new char[strlen(lastName) + 1];
-    strcpy(this->lastName, lastName);
-
-    this->position = new char[strlen(position) + 1];
-    strcpy(this->position, position);
-
-    this->status = status;
+    setFirstName(firstName);
+    setLastName(lastName);
+    setPosition(position);
+    setStatus(status);
 }
 
 User::~User()
@@ -109,3 +102,8 @@ bool User::authenticate(const char* password)
     return strcmp(this->password, password) == 0;
 }
 
+void User::printInfo() const
+{
+    std::cout << firstName << " " << lastName << " "
+              << position;
+}

@@ -7,14 +7,14 @@ const int EMPTY = -1;
 
 BookArray::BookArray()
 {
-    books = new Book[INIT_SIZE];
+    books = new Literature[INIT_SIZE];
     this->size = size;
     top = EMPTY;
 }
 
 BookArray::BookArray(int size)
 {
-    books = new Book[size];
+    books = new Literature[size];
     this->size = size;
     top = EMPTY;
 }
@@ -29,7 +29,7 @@ bool BookArray::empty() {return top == EMPTY;}
 void BookArray::resize()
 {
     int newSize = size * 2;
-    Book* newBooks = new Book[newSize];
+    Literature* newBooks = new Literature[newSize];
 
     for(int i = 0; i < size; i++)
         newBooks[i] = books[i];
@@ -39,7 +39,7 @@ void BookArray::resize()
     books = newBooks;
 }
 
-void BookArray::add(const Book &book)
+void BookArray::add(const Literature &book)
 {
     if(full())
         resize();
@@ -47,20 +47,22 @@ void BookArray::add(const Book &book)
     books[++top] = book;
 }
 
-void BookArray::remove(int id)
+void BookArray::remove(int ISBN)
 {
     if(empty())
         return;
     
-    if(getBookById(id))
-        books[id] = books[top--];
+    //This is not tested
+    Literature* temp = getBookByISBN(ISBN);
+    if(temp)
+        *temp = books[top--];
 }
 
-void BookArray::list()
+void BookArray::printList()
 {
     for(int i = 0; i <= top; i++)
     {
-        std::cout << i << ": " 
+        std::cout << books[i].getISBN() << ": " 
                   << books[i].getName() << " " 
                   << books[i].getAuthor()  << " ";
         books[i].getIssueDate().print();
@@ -69,11 +71,12 @@ void BookArray::list()
     }
 }
 
-Book* BookArray::getBookById(int id)
+Literature* BookArray::getBookByISBN(int ISBN)
 {
-    if(id >= 0 && id <= top)
+    for(int i = 0; i < top; i++)
     {
-        return &books[id];
+        if(books[i].getISBN() == ISBN)
+            return &books[i];
     }
     return nullptr;
 }
